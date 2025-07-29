@@ -230,6 +230,7 @@ body {
 /* Load More Button */
 .load-more-container {
   text-align: center;
+  margin-bottom: 100px;
 }
 
 .load-more-btn {
