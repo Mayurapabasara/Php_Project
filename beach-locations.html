@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Destinations</title>
+    <link rel="stylesheet" href="css/beach-location-styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">GOLK</h1>
+            <nav class="nav">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Destinations</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h2 class="hero-title">Explore Amazing Destinations</h2>
+                <p class="hero-subtitle">Discover breathtaking places around Sri Lanka</p>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All Destinations</button>
+                    <button class="filter-btn" data-category="beach">Beaches</button>
+                    <button class="filter-btn" data-category="mountain">Mountains</button>
+                    <button class="filter-btn" data-category="city">Cities</button>
+                    <button class="filter-btn" data-category="nature">Nature</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="destinations">
+            <div class="container">
+                <div class="cards-grid" id="cardsGrid">
+                    <!-- Cards will be dynamically generated here -->
+                </div>
+                
+                <div class="load-more-container">
+                    <button class="load-more-btn" id="loadMoreBtn">Load More Destinations</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Wanderlust. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/beachLocations.js"></script>
+</body>
+</html>
