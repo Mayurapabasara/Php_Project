@@ -242,7 +242,8 @@ function createCard(destination) {
 
   // Add click event for card interaction
   card.addEventListener("click", () => {
-    showDestinationDetails(destination)
+    window.location.href = "../service.html";
+    // showDestinationDetails(destination)
   })
 
   return card
@@ -291,11 +292,11 @@ function updateLoadMoreButton() {
 }
 
 // Show destination details (placeholder function)
-function showDestinationDetails(destination) {
-  alert(
-    `You clicked on ${destination.title}!\n\nPrice: ${destination.price}\nRating: ${destination.rating}/5\n\n${destination.description}\n\nThis would typically open a detailed view or booking page.`,
-  )
-}
+// function showDestinationDetails(destination) {
+//   alert(
+//     `You clicked on ${destination.title}!\n\nPrice: ${destination.price}\nRating: ${destination.rating}/5\n\n${destination.description}\n\nThis would typically open a detailed view or booking page.`,
+//   )
+// }
 
 // Add some dynamic effects
 function addDynamicEffects() {
