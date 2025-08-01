@@ -341,7 +341,7 @@ function createCard(destination) {
 
   // Add click event for card interaction
   card.addEventListener("click", () => {
-    window.location.href = "../service.html";
+    window.location.href = "service.html";
     // showDestinationDetails(destination)
   })
 
