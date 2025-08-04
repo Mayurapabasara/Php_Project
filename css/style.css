@@ -490,3 +490,17 @@
     border-right: none;
 }
 
+.button1 {
+            border: 0px solid white;
+            width: 30px;
+            height: 25px;
+            font-size: 17px;
+            text-align: center;
+}
+
+.span1{
+            display: inline-block;
+            width: 60px;
+            text-align: center;
+            font-size: 15px;
+}
