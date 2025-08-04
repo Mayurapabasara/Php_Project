@@ -6,10 +6,7 @@
     <title>Sports & Gaming</title>
 
     	
-
-
-
-    <!-- Favicon -->
+ <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
@@ -33,42 +30,84 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-        /* Basic Styling (Customize as needed) */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+        
+    #sports-gaming {
+        padding: 100px 0 150px;
+        background-color: #f8f9fa;
+    }
+
+    #sports-gaming h2 {
+        font-weight: 700;
+        font-size: 32px;
+        color: #FFA500;
+    }
+
+    #sports-gaming .card-box {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        padding: 25px;
+        transition: all 0.3s ease-in-out;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #sports-gaming .card-box:hover {
+        transform: translateY(-5px);
+    }
+
+    #sports-gaming .card-box h5 {
+        font-size: 20px;
+        color: #0F172B;
+        font-weight: bold;
+    }
+
+    #sports-gaming .stars {
+        color: #FFA500;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    #sports-gaming .card-box p {
+        flex-grow: 1;
+        font-size: 14px;
+        margin-bottom: 20px;
+        color: #6c757d;
+    }
+
+    #sports-gaming .btn {
+        font-size: 14px;
+        padding: 8px 16px;
+        font-weight: 600;
+        border-radius: 4px;
+    }
+
+    #sports-gaming .btn-primary {
+        background-color: #0F172B;
+        border-color: #0F172B;
+        color: #fff;
+    }
+
+    #sports-gaming .btn-outline-primary {
+        color: #FFA500;
+        border-color: #FFA500;
+    }
+
+    #sports-gaming .btn-outline-primary:hover {
+        background-color: #FFA500;
+        color: #fff;
+    }
+
+    @media (min-width: 768px) {
+        #sports-gaming .card-box {
+            min-height: 280px;
         }
-        .section {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #333;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
-        .game-list, .sports-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            width: 200px;
-        }
-        .card img {
-            width: 100%;
-            border-radius: 5px;
-        }
+    }
+</style>
+
+
     </style>
 </head>
 
@@ -90,57 +129,143 @@
         </div>
         <!-- Page Header End -->
 
-        
+
 
     <!-- Sports & Gaming Section -->
-    <div class="section" id="sports-gaming">
-        <h2>Sports & Gaming</h2>
-        <p>Explore our exciting sports facilities and gaming options. Whether you're into virtual adventures or physical activities, we have something for everyone!</p>
-        
-        <!-- Gaming Section -->
-        <div class="gaming">
-            <h3>Video Games & Esports</h3>
-            <div class="game-list">
-                <div class="card">
-                    <img src="https://via.placeholder.com/200" alt="Game 1">
-                    <h4>Fortnite</h4>
-                    <p>Battle Royale & Creative Modes</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/200" alt="Game 2">
-                    <h4>FIFA 23</h4>
-                    <p>Football Simulation</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/200" alt="Game 3">
-                    <h4>Valorant</h4>
-                    <p>Tactical Shooter</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sports Section -->
-        <div class="sports">
-            <h3>Sports Facilities</h3>
-            <div class="sports-list">
-                <div class="card">
-                    <img src="https://via.placeholder.com/200" alt="Tennis">
-                    <h4>Tennis Court</h4>
-                    <p>Book a session</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/200" alt="Swimming">
-                    <h4>Swimming Pool</h4>
-                    <p>Open 7AM–9PM</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/200" alt="Gym">
-                    <h4>Gym & Fitness</h4>
-                    <p>24/7 Access</p>
-                </div>
-            </div>
-        </div>
+<div class="container" id="sports-gaming">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center mb-5">
+      <h2 class="text-primary">Sports & Gaming</h2>
+      <p class="text-muted">Explore our exciting sports facilities and indoor games!</p>
     </div>
+
+    <!-- Card 1 -->
+    <div class="col-lg-4 col-md-6 mb-4">
+  <div class="card-box">
+    <h5>🎱 Pool Table</h5>
+    <div class="stars"><i class="fa fa-star"></i> 8 Ball & Snooker Modes</div>
+    <p>Enjoy professional-grade pool tables for casual or competitive matches.</p>
+    <div class="d-flex justify-content-between mt-3">
+      <button class="btn btn-primary">View Detail</button>
+      <button class="btn btn-outline-primary">Book Now</button>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Card 2 -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card-box">
+        <h5>♟️ Chess Room</h5>
+        <div class="stars"><i class="fa fa-star"></i> Strategy Game</div>
+        <p>Challenge friends to a battle of minds in our peaceful chess lounge.</p>
+        <div class="d-flex justify-content-between mt-3">
+  <button class="btn btn-primary">View Detail</button>
+  <button class="btn btn-outline-primary">Book Now</button>
+</div>
+
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card-box">
+        <h5>🎲 Board Games</h5>
+        <div class="stars"><i class="fa fa-star"></i> Monopoly, Ludo & More</div>
+        <p>Play a variety of classic and modern board games in a cozy room.</p>
+        <div class="d-flex justify-content-between mt-3">
+  <button class="btn btn-primary">View Detail</button>
+  <button class="btn btn-outline-primary">Book Now</button>
+</div>
+
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card-box">
+        <h5>🏸 Badminton</h5>
+        <div class="stars"><i class="fa fa-star"></i> Indoor & Outdoor Courts</div>
+        <p>Book your court and enjoy a fast-paced match with friends or family.</p>
+        <div class="d-flex justify-content-between mt-3">
+  <button class="btn btn-primary">View Detail</button>
+  <button class="btn btn-outline-primary">Book Now</button>
+</div>
+
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card-box">
+        <h5>🚴 Cycling</h5>
+        <div class="stars"><i class="fa fa-star"></i> Track & Trails</div>
+        <p>Cycle on our dedicated tracks or rent a mountain bike for adventure.</p>
+        <div class="d-flex justify-content-between mt-3">
+  <button class="btn btn-primary">View Detail</button>
+  <button class="btn btn-outline-primary">Book Now</button>
+</div>
+
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card-box">
+        <h5>🏐 Beach Volleyball</h5>
+        <div class="stars"><i class="fa fa-star"></i> Sand Court</div>
+        <p>Join a team and enjoy a beach volleyball match in the sun!</p>
+        <div class="d-flex justify-content-between mt-3">
+  <button class="btn btn-primary">View Detail</button>
+  <button class="btn btn-outline-primary">Book Now</button>
+</div>
+
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card-box">
+        <h5>🎾 Tennis</h5>
+        <div class="stars"><i class="fa fa-star"></i> Book a Session</div>
+        <p>Well-maintained court for casual and professional play.</p>
+       <div class="d-flex justify-content-between mt-3">
+  <button class="btn btn-primary">View Detail</button>
+  <button class="btn btn-outline-primary">Book Now</button>
+</div>
+
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card-box">
+        <h5>🏊 Swimming Pool</h5>
+        <div class="stars"><i class="fa fa-star"></i> Open 7AM–9PM</div>
+        <p>Relax or train in our clean and spacious indoor pool.</p>
+        <div class="d-flex justify-content-between mt-3">
+  <button class="btn btn-primary">View Detail</button>
+  <button class="btn btn-outline-primary">Book Now</button>
+</div>
+
+      </div>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card-box">
+        <h5>🏋️ Gym & Fitness</h5>
+        <div class="stars"><i class="fa fa-star"></i> 24/7 Access</div>
+        <p>Train with modern equipment, personal trainers, and workout plans.</p>
+        <div class="d-flex justify-content-between mt-3">
+  <button class="btn btn-primary">View Detail</button>
+  <button class="btn btn-outline-primary">Book Now</button>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
