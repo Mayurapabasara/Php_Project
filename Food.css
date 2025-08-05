@@ -1,0 +1,276 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fdfdfd;
+  margin: 0;
+  padding: 0;
+  color: #1e1e1e;
+}
+
+.services-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.section-title span {
+  color: #f9a825;
+}
+
+.services-table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 20px;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.table-head .table-cell {
+  font-weight: bold;
+  font-size: 17px;
+  background-color: #f1f1f1;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.selection-display {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 10px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.selected-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.selected-item {
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+  flex: 1 1 150px;
+}
+
+.selected-item h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.selected-item p {
+  margin: 5px 0 0;
+  font-weight: bold;
+}
+
+.total-box {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+#total {
+  padding: 10px;
+  width: 150px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+.submit-button {
+  padding: 12px 30px;
+  background-color: #f9a825;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.submit-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.submit-container button {
+  background-color: #f9a825;
+  color: #fff;
+  padding: 12px 30px;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-container button:hover {
+  background-color: #c17900;
+}
+
+/* e bill */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fdfdfd;
+  color: #1e1e1e;
+}
+
+.services-section {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin-bottom: 30px;
+}
+
+.section-title span {
+  color: #f9a825;
+}
+
+.services-table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 20px;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 30px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.table-head .table-cell {
+  font-weight: 700;
+  font-size: 18px;
+  background-color: #f1f1f1;
+  color: #000;
+}
+
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f9a825;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #e68900;
+}
+
+.customer-info {
+  margin-top: 30px;
+}
+
+.ebill {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ebill h2 {
+  text-align: center;
+  color: #2c2c2c;
+  margin-bottom: 20px;
+}
+
+.bill-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.bill-table th,
+.bill-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.bill-table th {
+  background-color: #f9f9f9;
+}
+
+.totals p {
+  font-size: 16px;
+  margin: 8px 0;
+  text-align: right;
+}
+
+#print-btn {
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
