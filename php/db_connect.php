@@ -1,4 +1,8 @@
 <?php
+// Add these lines at the very top of the file
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Database connection details
 define('DB_SERVER', 'localhost'); // Your database host
 define('DB_USERNAME', 'root');    // Your database username
