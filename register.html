@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | GOLK</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: url('https://source.unsplash.com/1600x900/?island,paradise') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .form-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      max-width: 550px;
+      margin: auto;
+      margin-top: 50px;
+    }
+    .form-title {
+      font-size: 30px;
+      font-weight: bold;
+      color: #006994;
+      margin-bottom: 25px;
+    }
+    .btn-custom {
+      background-color: #006994;
+      color: white;
+      font-weight: 500;
+    }
+    .btn-custom:hover {
+      background-color: #004f70;
+    }
+    .icon-input {
+      position: relative;
+    }
+    .icon-input i {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      color: #006994;
+    }
+    .icon-input input, .icon-input select {
+      padding-left: 35px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <div class="text-center mb-4">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" width="80" alt="Register Icon">
+    </div>
+    <div class="form-title text-center">Register at GOLK</div>
+    <form action="register.php" method="POST">
+      <div class="mb-3 icon-input">
+        <i class="fas fa-user"></i>
+        <input type="text" class="form-control" name="name" placeholder="User Name" required>
+      </div>
+      <div class="mb-3 icon-input">
+        <i class="fas fa-envelope"></i>
+        <input type="email" class="form-control" name="email" placeholder="Email" required>
+      </div>
+      <div class="mb-3 icon-input">
+        <i class="fas fa-phone"></i>
+        <input type="text" class="form-control" name="phone" placeholder="Phone Number" required>
+      </div>
+      <!--
+      <div class="mb-3 icon-input">
+        <i class="fas fa-venus-mars"></i>
+        <select class="form-control" name="gender" required>
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      -->
+      <div class="mb-3 icon-input">
+        <i class="fas fa-lock"></i>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+      </div>
+      <div class="mb-3 icon-input">
+        <i class="fas fa-lock"></i>
+        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="terms" required>
+        <label class="form-check-label" for="terms">I agree to the <a href="#">terms and conditions</a></label>
+      </div>
+      <button type="submit" class="btn btn-custom w-100" id="register" onclick="validatePassword();">Register</button>
+      <div class="mt-3 text-center">
+        <span>Already have an account? <a href="login.html">Login here</a></span>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function validatePassword(){
+      document.getElementById("register").addEventListener("click", function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const password = document.getElementById('password').value;
+      const confirm_password = document.getElementById('confirm_password').value;
+
+      if (password === confirm_password) {
+          // Redirect to login if passwords match
+          window.location.href = "login.html";
+      } else {
+          alert("Your registration has failed. Passwords do not match.");
+      }
+      });
+    }
+  </script>
+
+
+  <!-- <script src="js/register.js"></script> -->
+</body>
+</html>

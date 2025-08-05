@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event & Party | Your Hotel Name</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* Hero Section */
+    .event-hero {
+      background: url('img/Career_Compass_Committee_Enhanced_1-1.jpg') center/cover no-repeat;
+      padding: 120px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .event-hero h1 {
+      font-size: 52px;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .event-hero p {
+      font-size: 20px;
+      opacity: 100%;
+    }
+
+    /* Content Section */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 50px 20px;
+    }
+
+    h2.section-title {
+      font-size: 32px;
+      color: #FFA61B;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .section-text {
+      text-align: center;
+      margin-bottom: 40px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* Service List */
+    .event-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 30px;
+    }
+
+    .feature-box {
+      flex: 1 1 250px;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-box h4 {
+      color: #111;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    /* Gallery */
+    .event-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .event-gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    /* Booking Form */
+    .event-form {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.05);
+      max-width: 700px;
+      margin: 60px auto;
+    }
+
+    .event-form h3 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #FFA61B;
+    }
+
+    .event-form input,
+    .event-form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .event-form button {
+      background-color: #FFA61B;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .event-form button:hover {
+      background-color: #e3900f;
+    }
+
+    @media(max-width: 768px) {
+      .event-hero h1 { font-size: 36px; }
+      .container { padding: 30px 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Banner -->
+  <div class="event-hero">
+    <h1>Event & Party Services</h1>
+    <p>Unforgettable celebrations in luxurious settings</p>
+  </div>
+
+  <!-- Introduction Section -->
+  <div class="container">
+    <h2 class="section-title">Celebrate with Us</h2>
+    <p class="section-text">
+      From intimate gatherings to grand celebrations, our hotel offers premium venues, catering, decoration, and event planning support to ensure your special day is flawless and stress-free.
+    </p>
+
+    <!-- Services -->
+    <div class="event-features">
+      <div class="feature-box">
+        <img src="img/icons/9976819.png" alt="Hall" width="55">
+        <h4>Elegant Banquet Halls</h4>
+      </div>
+      <div class="feature-box">
+        <img src="img/icons/images.png" alt="Decor" width="50">
+        <h4>Custom Themes & Decor</h4>
+      </div>
+      <div class="feature-box">
+        <img src="img/icons/icon-plate.png" alt="Catering" width="80">
+        <h4>In-House Catering</h4>
+      </div>
+      <div class="feature-box">
+        <img src="img/icons/a-young-dj-is-focused-on-mixing-music-on-a-dj-setup-png.webp" alt="Music" width="50">
+        <h4>Live Music & DJ</h4>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <h2 class="section-title">Our Events in Action</h2>
+    <div class="event-gallery">
+      <img src="img/we-create-events-panampilly-nagar-ernakulam-event-management-companies-nsobpzm660.avif" alt="Event Photo 1">
+      <img src="img/stem-list-EVgsAbL51Rk-unsplash-1024x576.jpg" alt="Event Photo 2">
+      <img src="img/642951102e8281680429328.jpeg" alt="Event Photo 3">
+      <img src="img/istock-1324006497-kopio.jpg" alt="Event Photo 4">
+    </div>
+  </div>
+
+  <!-- Booking Form -->
+  <div class="event-form">
+    <h3>Book Your Event</h3>
+    <form action="submit_event.php" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="phone" placeholder="Phone Number" required>
+      <input type="date" name="event_date" required>
+      <textarea name="message" rows="5" placeholder="Describe your event or any special requests..."></textarea>
+      <button type="submit">Submit Booking Request</button>
+    </form>
+  </div>
+
+</body>
+</html>
