@@ -496,7 +496,21 @@
     border-right: none;
 }
 
-<<<<<<< HEAD
+.table-head .table-cell:hover {
+  background-color: #f9a825; /* gold hover effect */
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.table-head .table-cell:hover {
+  background-color: #f9a825;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
 .button1 {
             border: 0px solid white;
             width: 30px;
@@ -511,7 +525,6 @@
             text-align: center;
             font-size: 15px;
 }
-=======
 
     
     #sports-gaming {
@@ -588,4 +601,3 @@
             min-height: 280px;
         }
     }
->>>>>>> origin/main
