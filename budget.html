@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>GOLK - Budget Report</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    
+    <style>
+        .budget-card {
+            border-radius: 10px;
+            border-left: 5px solid #0d6efd;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .budget-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .budget-card.over-budget {
+            border-left-color: #dc3545;
+        }
+        
+        .budget-card.under-budget {
+            border-left-color: #198754;
+        }
+        
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+        }
+        
+        .chart-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-card i {
+            font-size: 2rem;
+            color: #0d6efd;
+        }
+        
+        .table-responsive {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .table th {
+            background-color: #f8f9fa;
+        }
+        
+        .report-header {
+            background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .budget-alert {
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            transition: all 0.3s;
+        }
+        
+        .budget-alert:hover {
+            transform: translateX(5px);
+        }
+        
+        .budget-alert.warning {
+            border-left-color: #ffc107;
+        }
+        
+        .budget-alert.danger {
+            border-left-color: #dc3545;
+        }
+        
+        .budget-alert.success {
+            border-left-color: #198754;
+        }
+        
+        .chart-placeholder {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-dark px-0">
+            <div class="row gx-0">
+                <div class="col-lg-3 bg-dark d-none d-lg-block">
+                    <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                        <h1 class="m-0 text-primary text-uppercase">GOLK</h1>
+                    </a>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row gx-0 bg-white d-none d-lg-flex">
+                        <div class="col-lg-7 px-5 text-start">
+                            <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                                <i class="fa fa-envelope text-primary me-2"></i>
+                                <p class="mb-0">info@example.com</p>
+                            </div>
+                            <div class="h-100 d-inline-flex align-items-center py-2">
+                                <i class="fa fa-phone-alt text-primary me-2"></i>
+                                <p class="mb-0">+012 345 6789</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 px-5 text-end">
+                            <div class="d-inline-flex align-items-center py-2">
+                                <a class="me-3" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="me-3" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="me-3" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a class="me-3" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="" href=""><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
+                        <a href="index.html" class="navbar-brand d-block d-lg-none">
+                            <h1 class="m-0 text-primary text-uppercase">GOLK</h1>
+                        </a>
+                        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+                                <a href="index.html" class="nav-item nav-link">Home</a>
+                                <a href="about.html" class="nav-item nav-link">About</a>
+                                <a href="service.html" class="nav-item nav-link">Services</a>
+                                <a href="room.html" class="nav-item nav-link">Rooms</a>
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                                    <div class="dropdown-menu rounded-0 m-0">
+                                        <a href="booking.html" class="dropdown-item">Booking</a>
+                                        <a href="team.html" class="dropdown-item">Our Team</a>
+                                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                        <a href="budget-report.html" class="dropdown-item active">Budget Report</a>
+                                    </div>
+                                </div>
+                                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            </div>
+                            <a href="https://htmlcodex.com/hotel-html-template-pro" class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block">Premium Version<i class="fa fa-arrow-right ms-3"></i></a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- Page Header Start -->
+        <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/carousel-1.jpg);">
+            <div class="container-fluid page-header-inner py-5">
+                <div class="container text-center pb-5">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">Budget Report</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Budget Report</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+        <!-- Budget Report Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <!-- Report Header -->
+                <div class="report-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2><i class="fas fa-file-invoice-dollar"></i> Total Budget Overview</h2>
+                            <p class="mb-0">Financial summary of all budget allocations and expenditures</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <h3>Reporting Period: Jan 1, 2023 - Dec 31, 2023</h3>
+                            <p class="mb-0">Last updated: May 15, 2023 14:30</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Budget Summary Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="budget-card card p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-2">Total Budget</h6>
+                                    <h3 class="mb-0">$125,000</h3>
+                                </div>
+                                <div class="bg-primary bg-opacity-10 p-3 rounded">
+                                    <i class="fas fa-wallet text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Annual Allocation</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="budget-card card p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-2">Amount Spent</h6>
+                                    <h3 class="mb-0">$78,450</h3>
+                                </div>
+                                <div class="bg-success bg-opacity-10 p-3 rounded">
+                                    <i class="fas fa-money-bill-wave text-success"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Utilization</span>
+                                    <span>62.8%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 62.8%" aria-valuenow="62.8" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="budget-card card p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-2">Remaining Budget</h6>
+                                    <h3 class="mb-0">$46,550</h3>
+                                </div>
+                                <div class="bg-info bg-opacity-10 p-3 rounded">
+                                    <i class="fas fa-piggy-bank text-info"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Available</span>
+                                    <span>37.2%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 37.2%" aria-valuenow="37.2" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charts Row -->
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="chart-container">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5>Budget vs Actual Spending</h5>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="chartDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        By Category
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="chartDropdown">
+                                        <li><a class="dropdown-item" href="#">By Category</a></li>
+                                        <li><a class="dropdown-item" href="#">By Quarter</a></li>
+                                        <li><a class="dropdown-item" href="#">By Department</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="chart-placeholder">
+                                <canvas id="budgetChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="chart-container h-100">
+                            <h5 class="mb-3">Budget Distribution</h5>
+                            <div class="chart-placeholder">
+                                <canvas id="distributionChart"></canvas>
+                            </div>
+                            <div class="mt-3">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-primary me-2" style="width: 15px; height: 15px;"></span>
+                                    <span>Marketing (35%)</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-success me-2" style="width: 15px; height: 15px;"></span>
+                                    <span>Operations (25%)</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-info me-2" style="width: 15px; height: 15px;"></span>
+                                    <span>Technology (20%)</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-warning me-2" style="width: 15px; height: 15px;"></span>
+                                    <span>Miscellaneous (20%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Department Budgets -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Department Budgets</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Department</th>
+                                                <th>Allocated Budget</th>
+                                                <th>Spent</th>
+                                                <th>Remaining</th>
+                                                <th>Utilization</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Marketing</td>
+                                                <td>$43,750</td>
+                                                <td>$32,150</td>
+                                                <td>$11,600</td>
+                                                <td>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 73.5%"></div>
+                                                    </div>
+                                                    <small>73.5%</small>
+                                                </td>
+                                                <td><span class="badge bg-warning">Over Budget</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Operations</td>
+                                                <td>$31,250</td>
+                                                <td>$18,750</td>
+                                                <td>$12,500</td>
+                                                <td>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 60%"></div>
+                                                    </div>
+                                                    <small>60%</small>
+                                                </td>
+                                                <td><span class="badge bg-success">On Track</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Technology</td>
+                                                <td>$25,000</td>
+                                                <td>$15,200</td>
+                                                <td>$9,800</td>
+                                                <td>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 60.8%"></div>
+                                                    </div>
+                                                    <small>60.8%</small>
+                                                </td>
+                                                <td><span class="badge bg-success">On Track</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Customer Service</td>
+                                                <td>$15,000</td>
+                                                <td>$7,350</td>
+                                                <td>$7,650</td>
+                                                <td>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 49%"></div>
+                                                    </div>
+                                                    <small>49%</small>
+                                                </td>
+                                                <td><span class="badge bg-primary">Under Budget</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Miscellaneous</td>
+                                                <td>$10,000</td>
+                                                <td>$5,000</td>
+                                                <td>$5,000</td>
+                                                <td>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"></div>
+                                                    </div>
+                                                    <small>50%</small>
+                                                </td>
+                                                <td><span class="badge bg-primary">Under Budget</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Expense Breakdown -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Top Expenses</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Expense</th>
+                                                <th>Amount</th>
+                                                <th>Date</th>
+                                                <th>Category</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Google Ads Campaign</td>
+                                                <td>$8,500</td>
+                                                <td>Apr 15, 2023</td>
+                                                <td>Marketing</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Website Redesign</td>
+                                                <td>$7,200</td>
+                                                <td>Mar 22, 2023</td>
+                                                <td>Technology</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Trade Show Booth</td>
+                                                <td>$6,800</td>
+                                                <td>Feb 10, 2023</td>
+                                                <td>Marketing</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CRM Software</td>
+                                                <td>$5,500</td>
+                                                <td>Jan 5, 2023</td>
+                                                <td>Technology</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Office Rent</td>
+                                                <td>$4,500</td>
+                                                <td>May 1, 2023</td>
+                                                <td>Operations</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Budget Alerts</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="budget-alert alert alert-warning d-flex align-items-center mb-3 warning">
+                                    <i class="fas fa-exclamation-triangle me-3"></i>
+                                    <div>
+                                        <strong>Marketing Budget</strong> is exceeding projections by 13.5%
+                                    </div>
+                                </div>
+                                <div class="budget-alert alert alert-success d-flex align-items-center mb-3 success">
+                                    <i class="fas fa-check-circle me-3"></i>
+                                    <div>
+                                        <strong>Technology Budget</strong> is on track with projections
+                                    </div>
+                                </div>
+                                <div class="budget-alert alert alert-primary d-flex align-items-center mb-3">
+                                    <i class="fas fa-info-circle me-3"></i>
+                                    <div>
+                                        <strong>Customer Service Budget</strong> has 49% utilization - consider reallocating funds
+                                    </div>
+                                </div>
+                                <div class="budget-alert alert alert-danger d-flex align-items-center danger">
+                                    <i class="fas fa-fire me-3"></i>
+                                    <div>
+                                        <strong>Social Media Ads</strong> have spent 85% of quarterly budget with 1 month remaining
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Budget Report End -->
+
+        <!-- Newsletter Start -->
+        <div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 border rounded p-1">
+                    <div class="border rounded text-center p-1">
+                        <div class="bg-white rounded text-center p-5">
+                            <h4 class="mb-4">Subscribe Our <span class="text-primary text-uppercase">Newsletter</span></h4>
+                            <div class="position-relative mx-auto" style="max-width: 400px;">
+                                <input class="form-control w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+                                <button type="button" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter Start -->
+        
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
+            <div class="container pb-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="bg-primary rounded p-4">
+                            <a href="index.html"><h1 class="text-white text-uppercase mb-3">GOLK</h1></a>
+                            <p class="text-white mb-0">
+                                🌍 Thank you for exploring the world with us! Your adventure is our passion. See you on your next journey! ✈️
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>University of Ruhuna, Matara</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="row gy-5 g-4">
+                            <div class="col-md-6">
+                                <h6 class="section-title text-start text-primary text-uppercase mb-4">Company</h6>
+                                <a class="btn btn-link" href="">About Us</a>
+                                <a class="btn btn-link" href="">Contact Us</a>
+                                <a class="btn btn-link" href="">Privacy Policy</a>
+                                <a class="btn btn-link" href="">Terms & Condition</a>
+                                <a class="btn btn-link" href="">Support</a>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="section-title text-start text-primary text-uppercase mb-4">Services</h6>
+                                <a class="btn btn-link" href="">Food & Restaurant</a>
+                                <a class="btn btn-link" href="">Spa & Fitness</a>
+                                <a class="btn btn-link" href="">Sports & Gaming</a>
+                                <a class="btn btn-link" href="">Event & Party</a>
+                                <a class="btn btn-link" href="">GYM & Yoga</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
+                            
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <div class="footer-menu">
+                                <a href="">Home</a>
+                                <a href="">Cookies</a>
+                                <a href="">Help</a>
+                                <a href="">FQAs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Initialize charts when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Budget vs Actual Spending Chart
+            const budgetCtx = document.getElementById('budgetChart').getContext('2d');
+            const budgetChart = new Chart(budgetCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Marketing', 'Operations', 'Technology', 'Customer Service', 'Miscellaneous'],
+                    datasets: [
+                        {
+                            label: 'Budget',
+                            data: [43750, 31250, 25000, 15000, 10000],
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Actual Spending',
+                            data: [32150, 18750, 15200, 7350, 5000],
+                            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Budget Distribution Chart
+            const distCtx = document.getElementById('distributionChart').getContext('2d');
+            const distChart = new Chart(distCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Marketing', 'Operations', 'Technology', 'Customer Service', 'Miscellaneous'],
+                    datasets: [{
+                        data: [35, 25, 20, 12, 8],
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.8)',
+                            'rgba(75, 192, 192, 0.8)',
+                            'rgba(153, 102, 255, 0.8)',
+                            'rgba(255, 159, 64, 0.8)',
+                            'rgba(255, 205, 86, 0.8)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
