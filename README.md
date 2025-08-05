@@ -1,4 +1,4 @@
-🌍 About the Tourist Management App
+<h1> 🌍 About the Tourist Management App </h1>
 
 Welcome to the Tourist Management App – a dynamic and user-friendly platform built to transform how travelers explore destinations. Whether you're a solo traveler, a tour company, or a local guide, this app offers seamless tools to discover, plan, and manage tours with ease.
 🧭 Key Features
@@ -21,14 +21,19 @@ Welcome to the Tourist Management App – a dynamic and user-friendly platform b
     🧠 AI Integration
     Integrated image recognition and recommendation systems to enhance user experience.
 
-🛠️ Tech Stack
+<h3>🛠️ Tech Stack</h3>
 Layer	Technologies
-Frontend	HTML, CSS, SCSS, JavaScript
-Backend	PHP
-Database	MySQL / PostgreSQL
-AI Features	TensorFlow.js, OpenCV
-APIs	RESTful API using native PHP
-🎯 Purpose
+Frontend	
+<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>SCSS</li>
+    <li>JavaScript</li>
+    <li>MYSQL</li>
+    <li>BackEnd for PHP</li>
+</ul>
+
+<h3>🎯 Purpose</h3>
 
 This project aims to:
 
@@ -37,13 +42,3 @@ This project aims to:
     Empower tour operators to showcase and manage their services.
 
     Integrate AI for personalized and smarter travel recommendations.
-
-📸 Screenshots
-
-Add screenshots of your UI here (e.g., dashboard, map view, booking screen).
-🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
-📄 License
-
-This project is licensed under the MIT License.
