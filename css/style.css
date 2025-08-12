@@ -42,7 +42,6 @@
     font-weight: 500;
     text-transform: uppercase;
     transition: .5s;
-    background-color: transparent;
 }
 
 .btn.btn-primary,
